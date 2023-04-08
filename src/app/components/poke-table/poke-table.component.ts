@@ -30,11 +30,11 @@ export class PokeTableComponent implements OnInit {
     let pokemonData;
     
     for (let i = 1; i <= 150; i++) {
-      this.pokemonService.getPokemons(i).subscribe(
-        res => {
+      this.pokemonService.getPokemons(i).subscribe({
+       next: res => {
           pokemonData = {
             position: i,
-            image: res.sprites.front_default,
+            image: res.sprites.other.home.front_default,
             name: res.name
           };
           //ponemos la data que viene del servicio en un arreglo
@@ -42,12 +42,12 @@ export class PokeTableComponent implements OnInit {
           this.dataSource = new MatTableDataSource<any>(this.data);
           this.dataSource.paginator = this.paginator;
         },
-        err => {
-          console.log(err);
-        }
-      );
+       error: err => console.log(err)
+        
+     });
     }
   }
+  
 
   //Filtro para el paginador
   applyFilter(event: Event) {

@@ -6,14 +6,35 @@
     <mat-card-subtitle>Nº {{pokemon.id}}</mat-card-subtitle>
   </mat-card-header>
 
-  <img mat-card-image src="{{pokemonImg}}" alt="pokemon">
+  <img mat-card-image src="{{pokemonImg}}" alt="pokemon" class="mainImage">
 
+  <div class="buttons">
+    <div class="button-r">
+      <button (click)="laestImg()">
+        <img src="../../../assets/images/izquierda.png" class="leftArrow">
+      </button>
+    </div>
+
+    <div class="button-l">
+      <button (click)="nextImg()" color="$red">
+        <img src="../../../assets/images/derecha.png" class="rightArrow">
+      </button>
+  </div>
+  
+
+  </div>
   <mat-card-content>
-    <mat-chip>
+    <mat-chip-set>
       <mat-chip color="primary">Type: {{pokemonType}}</mat-chip>
       <mat-chip color="primary">Height: {{pokemon.height}}</mat-chip>
       <mat-chip color="primary">Weight: {{pokemon.weight}}</mat-chip>
-    </mat-chip>
+      <mat-chip color="primary">Ability: {{pokeAbility}}</mat-chip>
+      <mat-chip color="primary">Moves: {{moves}}</mat-chip>
+    </mat-chip-set>
   </mat-card-content>
 
+
+  
+ 
 </mat-card>
+
